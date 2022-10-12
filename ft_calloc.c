@@ -6,12 +6,12 @@
 /*   By: kslik <kslik@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 19:59:53 by kslik             #+#    #+#             */
-/*   Updated: 2022/10/10 20:07:11 by kslik            ###   ########.fr       */
+/*   Updated: 2022/10/12 13:14:46 by kslik            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-void *ft_calloc( size_t num, size_t size )
+void *ft_calloc( size_t num, size_t size)
 {
     void *p;
     p = malloc(num *size);

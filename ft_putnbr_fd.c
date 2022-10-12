@@ -6,7 +6,7 @@
 /*   By: kslik <kslik@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:36:57 by kslik             #+#    #+#             */
-/*   Updated: 2022/10/11 13:04:07 by kslik            ###   ########.fr       */
+/*   Updated: 2022/10/12 14:51:10 by kslik            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void ft_putnbr_fd(int n, int fd)
     else 
         ft_putchar_fd((n + '0'),fd);
 }
-#include <stdio.h>
-int main()
-{
-    ft_putnbr_fd(-2147483648, 1);
-}
+// #include <stdio.h>
+// int main()
+// {
+//     ft_putnbr_fd(-2147483648, 1);
+// }

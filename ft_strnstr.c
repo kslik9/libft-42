@@ -6,7 +6,7 @@
 /*   By: kslik <kslik@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 15:17:44 by kslik             #+#    #+#             */
-/*   Updated: 2022/10/11 12:04:07 by kslik            ###   ########.fr       */
+/*   Updated: 2022/10/12 13:13:27 by kslik            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char *ft_strnstr(const char *hay, const char *ned,size_t l )
         i++;
     }
     return (0);
-    
+} 
 // }       
 // #include <stdio.h>
 // #include <string.h>

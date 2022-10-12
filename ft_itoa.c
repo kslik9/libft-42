@@ -1,48 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kslik <kslik@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 13:23:22 by kslik             #+#    #+#             */
-/*   Updated: 2022/10/12 15:41:05 by kslik            ###   ########.fr       */
+/*   Created: 2022/10/12 11:50:55 by kslik             #+#    #+#             */
+/*   Updated: 2022/10/12 15:42:17 by kslik            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-char *ft_strjoin(char const *s1, char const *s2)
+char *ft_itoa(int n)
 {
+    char *str;
     int i;
-    int j;
-    int k;
-    int n;
-    char *y;
-    i = 0;
-    j = 0;
-    k = ft_strlen((char *)s1);
-    n = ft_strlen((char *)s2);
-    y = malloc((k + n + 1) * sizeof (char));
-    if(!y)
-        return(0);
-    while (i < k)
+    int c;
+    long s;
+    c = n;
+    s = n;
+    i = 1;
+    while(c / 10)
     {
-        y[i] = s1[i];
+        c = c / 10;
         i++;
-    } 
-    while(i < (k + n))
-    {
-        y[i] = s2[j];
-        i++;
-        j++;
     }
-    y[i] = '\0';
-    return (y);
+     if(n < 0)
+    {
+        i++;
+        s = s * (-1);
+    }
+    str = malloc((i + 1) * sizeof(char));
+    str[i] = '\0';
+    if(!str)
+        return(0);
+    i = i - 1;
+    while (i >= 0)
+    {
+        str[i] = s % 10 + 48;
+        s = s / 10;
+        i--;
+    }
+    if (n < 0)
+       str[0] = '-';
+    return (str);
 }
 // #include <stdio.h>
 // int main()
 // {
-//     char s1[]= "ssf";
-//     char s2[]= "qwe";
-//     printf("%s", ft_strjoin(s1,s2));   
+//     printf("%s",ft_itoa(-2147483648));
 // }

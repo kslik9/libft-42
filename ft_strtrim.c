@@ -6,52 +6,80 @@
 /*   By: kslik <kslik@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:20:46 by kslik             #+#    #+#             */
-/*   Updated: 2022/10/11 16:50:23 by kslik            ###   ########.fr       */
+/*   Updated: 2022/10/12 14:54:19 by kslik            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-int mochkila(char const *s1, char s)
+int mochkila(char const *set, char s)
 {
     int i;
     i = 0;
-    while (!s1)
+    while (set[i])
     {
-        if(s1[i] == s)
+        if(set[i] == s)
             return (1);
         i++;
     }
     return (0);
 }
-char *ft_strtrim(char const *s1, char const *set)
+char    *substr(char const *s, unsigned int start, size_t len)
+{
+    char    *str;
+    size_t  i;
+ 
+    i = 0;
+    str = malloc(len + 1);
+    if (!str) 
+        return (0);
+    if (start < ft_strlen((char *)s))
+    {
+        while (i < len && s[i + start])
+        {
+            str[i] = s[start + i];
+            i++;
+        }
+    }
+    str[i] = '\0';
+    return (str);
+}
+int smochkila(char const *set, char s)
 {
     int i;
-    int x;
-    int j;
-    int y;
-    int w;
+    i = ft_strlen((char *)set) - 1;
+    while (i >= 0)
+    {
+        if(set[i] == s)
+            return (1);
+        i--;
+    }
+    return (0);
+}
+char *ft_strtrim(char const *s1, char const *set)
+{
+    size_t i;
+    size_t x;
+    size_t j;
+    size_t y;
+    size_t w;
     char *trim;
+
+    if (!s1)
+        return (0);
     x = 0;
     i = 0;
     j = ft_strlen((char *)set);
     y = ft_strlen((char *)s1);
-    while(set[x] != '\0')
-    {
-        if (mochkila(set, s1[i]) == 1 )
-            i++;
-        x++;
-    }
-    while(j >= 0)
-    {
-        if (mochkila(set, s1[y]) == 1 )
-            y--;
-        j--;
-    }
+    while((mochkila(set, s1[i]) == 1))
+        i++;
+    while(smochkila(set, s1[y - 1]) == 1)
+        y--;
     w = y - i;
-    trim = ft_substr((char const *)s1,i,y - i);
-    if(trim == 0)
-        return (0);
-    
+    if (y == 0)
+        w = 0;
+    trim = substr((char const *)s1,i,w);
+    if (!trim)
+        return 0;
     return (trim);
 }
 // #include <stdio.h>

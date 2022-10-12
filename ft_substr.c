@@ -6,7 +6,7 @@
 /*   By: kslik <kslik@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 11:31:13 by kslik             #+#    #+#             */
-/*   Updated: 2022/10/11 12:34:47 by kslik            ###   ########.fr       */
+/*   Updated: 2022/10/12 15:36:19 by kslik            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,29 @@ char *ft_substr(char const *s, unsigned int start,size_t len)
     size_t i;
     size_t j;
     char *q;
-    i = 0;
+    size_t y;
+    
+    i = start;
     j = 0;
-    q = malloc(((len - start) + 1) * sizeof (char));
-    if(!s)
+    y = ft_strlen((char *)s);
+    if (i >= y)
+        return (malloc(1));
+    q = malloc((len + 1) * sizeof (char));
+    if(!q)
         return(0);
-    while(i < start)
-        i++;
-    while (i <= len && i >= start)
+    while (j < len)
     {
         q[j] = s[i];
         i++;
         j++;
     }
-    q[len] = '\0';
+    
+    q[j] = '\0';
     return (q);
 }
 // #include <stdio.h>
 // int main()
 // {
-//     char s[]= "dfsdgdg";
-//     printf("%s", ft_substr(s,2,6));
+//     char s[40]= "kahidasllik";
+//     printf("%s", ft_substr(s,2,10));
 // }
