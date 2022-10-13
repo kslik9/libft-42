@@ -6,7 +6,7 @@
 /*   By: kslik <kslik@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:20:46 by kslik             #+#    #+#             */
-/*   Updated: 2022/10/12 14:54:19 by kslik            ###   ########.fr       */
+/*   Updated: 2022/10/13 15:09:05 by kslik            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,6 @@ int mochkila(char const *set, char s)
         i++;
     }
     return (0);
-}
-char    *substr(char const *s, unsigned int start, size_t len)
-{
-    char    *str;
-    size_t  i;
- 
-    i = 0;
-    str = malloc(len + 1);
-    if (!str) 
-        return (0);
-    if (start < ft_strlen((char *)s))
-    {
-        while (i < len && s[i + start])
-        {
-            str[i] = s[start + i];
-            i++;
-        }
-    }
-    str[i] = '\0';
-    return (str);
 }
 int smochkila(char const *set, char s)
 {
@@ -77,7 +57,7 @@ char *ft_strtrim(char const *s1, char const *set)
     w = y - i;
     if (y == 0)
         w = 0;
-    trim = substr((char const *)s1,i,w);
+    trim = ft_substr((char const *)s1,i,w);
     if (!trim)
         return 0;
     return (trim);
