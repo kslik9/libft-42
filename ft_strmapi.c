@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kslik <kslik@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 19:59:53 by kslik             #+#    #+#             */
-/*   Updated: 2022/10/15 19:54:26 by kslik            ###   ########.fr       */
+/*   Created: 2022/10/13 19:40:55 by kslik             #+#    #+#             */
+/*   Updated: 2022/10/16 12:51:55 by kslik            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t num, size_t size)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	void	*p;
+	int		i;
+	int		j;
+	char	*kslik;
 
-	p = malloc(num * size);
-	if (p == 0)
+	i = 0;
+	j = ft_strlen((char *)s);
+	kslik = malloc((j + 1) * sizeof(char));
+	if (!kslik)
 		return (0);
-	ft_bzero(p, num * size);
-	return (p);
+	while (s[i])
+	{
+		kslik[i] = f(i, s[i]);
+		i++;
+	}
+	kslik[i] = '\0';
+	return (kslik);
 }

@@ -6,47 +6,55 @@
 /*   By: kslik <kslik@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:50:55 by kslik             #+#    #+#             */
-/*   Updated: 2022/10/12 15:42:17 by kslik            ###   ########.fr       */
+/*   Updated: 2022/10/16 12:29:19 by kslik            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-char *ft_itoa(int n)
+
+int	tol(long int c)
 {
-    char *str;
-    int i;
-    int c;
-    long s;
-    c = n;
-    s = n;
-    i = 1;
-    while(c / 10)
-    {
-        c = c / 10;
-        i++;
-    }
-     if(n < 0)
-    {
-        i++;
-        s = s * (-1);
-    }
-    str = malloc((i + 1) * sizeof(char));
-    str[i] = '\0';
-    if(!str)
-        return(0);
-    i = i - 1;
-    while (i >= 0)
-    {
-        str[i] = s % 10 + 48;
-        s = s / 10;
-        i--;
-    }
-    if (n < 0)
-       str[0] = '-';
-    return (str);
+	int	i;
+
+	i = 1;
+	if (c < 0)
+	{
+		c = c * (-1);
+		i++;
+	}
+	while (c / 10)
+	{
+		c = c / 10;
+		i++;
+	}
+	return (i);
 }
-// #include <stdio.h>
-// int main()
-// {
-//     printf("%s",ft_itoa(-2147483648));
-// }
+
+char	*ft_itoa(int n)
+{
+	char		*str;
+	long int	i;
+	long int	s;
+	int			j;
+
+	j = 0;
+	s = n;
+	i = tol(s);
+	if (s < 0)
+	{
+		s *= -1;
+		j = 1;
+	}
+	str = malloc((i + 1) * sizeof(char));
+	if (!str)
+		return (0);
+	str[i] = '\0';
+	if (j == 1)
+		str[0] = '-';
+	while (--i >= j)
+	{
+		str[i] = s % 10 + 48;
+		s = s / 10;
+	}
+	return (str);
+}

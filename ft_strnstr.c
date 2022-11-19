@@ -6,52 +6,37 @@
 /*   By: kslik <kslik@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 15:17:44 by kslik             #+#    #+#             */
-/*   Updated: 2022/10/12 13:13:27 by kslik            ###   ########.fr       */
+/*   Updated: 2022/10/16 12:52:02 by kslik            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strnstr(const char *hay, const char *ned,size_t l )
+char	*ft_strnstr(const char *hay, const char *need, size_t len)
 {
-    size_t i ;
-    size_t n ;
-    size_t c ;
-    i = 0;
+	size_t	i;
+	size_t	nsize;
+	size_t	j;
+	size_t	hsize;
 
-    c = 0;
-    if (l == 0)
-        return(char *)hay;
-    if (ned[0] == '\0')
-        return(char *)hay;
-    if(ft_strlen((char *)ned) > ft_strlen((char *)hay))
-        return (0);
-    while ((hay[i]) && i < l)
-    {
-        n = 0;
-        while(hay[i] && hay[i] == ned[n] && i < l)
-        {
-            c++;
-            i++;
-            n++;
-        }
-        if(c == ft_strlen((char *)ned))
-            return (char *)&hay[i - ft_strlen((char *)ned)];
-        if (c > 0)
-            i--;
-        c = 0;
-        i++;
-    }
-    return (0);
-} 
-// }       
-// #include <stdio.h>
-// #include <string.h>
-// int main()
-// {
-//     char *h = NULL;
-//     char n[]= "khalid";
-//     //printf("%s\n",ft_strnstr(h,n,20));
-//     printf("%s",strnstr(h,n,20));
-
-// }
+	nsize = ft_strlen((char *)need);
+	hsize = ft_strlen((char *)hay);
+	if (need[0] == 0)
+		return ((char *)hay);
+	if (!hay || len == 0)
+		return (0);
+	if (len > hsize)
+		len = hsize;
+	i = 0;
+	while (hay[i] && i < len)
+	{
+		j = 0;
+		while (((hay[i + j] == need[j]) && j < nsize) && (hay[i + j] && i
+				+ j < len))
+			j++;
+		if (j == nsize)
+			return ((char *)(hay + i));
+		i++;
+	}
+	return (0);
+}
